@@ -12,7 +12,7 @@ cd Python-Automate-Email-Sender
 ```
 3. Enable two-step verification on your google account (this from where you want to send your email)
 4. Go to this [link](https://myaccount.google.com/u/4/apppasswords) to set an app email password.
-5. Fill gaps and paste received 16-digits password.
+5. Fill gaps and copy received 16-digits password.
 6. Create .env file:
 ``` bash
 echo EMAIL_SENDER = "" > .env

@@ -1,17 +1,8 @@
-from dotenv import load_dotenv
+from dotenv import dotenv_values
 import os
 from email.message import EmailMessage
 import ssl
 import smtplib
-
-fileName = "message.txt"
-load_dotenv()
-
-emailSender = os.getenv("EMAIL_SENDER")
-emailPassword = os.getenv("EMAIL_PASSWORD")
-emailReceiver = os.getenv("EMAIL_RECEIVER")
-server = "smtp.gmail.com"
-port = 465
 
 
 def sendEmail(emailSender, emailPassword, emailReceiver, server, port, fileName):
@@ -36,6 +27,15 @@ def sendEmail(emailSender, emailPassword, emailReceiver, server, port, fileName)
   print("Email sent successfully")
 
 def main():
+  config = dotenv_values(".env")
+  fileName = "message.txt"
+  
+  emailSender = config["EMAIL_SENDER"]
+  emailPassword = config["EMAIL_PASSWORD"]
+  emailReceiver = config["EMAIL_RECEIVER"]
+  server = "smtp.gmail.com"
+  port = 465
+  print("Email is being sent to: ", emailReceiver)
   sendEmail(emailSender, emailPassword, emailReceiver, server, port, fileName)  
 
 if __name__ == "__main__":
